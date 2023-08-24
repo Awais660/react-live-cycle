@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
+import Student from './Student';
 
 class Component extends React.Component{
   constructor(){
@@ -12,6 +13,10 @@ class Component extends React.Component{
     this.state={
       count:0
     }
+
+    this.state={
+      show:true
+    }
   }
 
   componentDidMount(){
@@ -22,12 +27,13 @@ class Component extends React.Component{
     console.log(preState);
   }
 
-  shouldComponentUpdate(){
-    console.log(this.state.count);
-    if(this.state.count>5 && this.state.count<10){
-    return true;
-    }
-  }
+  // shouldComponentUpdate(){
+  //   console.log(this.state.count);
+  //   if(this.state.count>5 && this.state.count<10){
+  //   return true;
+  //   }
+  // }
+
 
 render(){
   return (
@@ -37,6 +43,12 @@ render(){
       <br></br>
       <h1>hello world  {this.state.count}</h1>
       <button onClick={()=>this.setState({count:this.state.count+1})}>update name</button>
+
+      <br></br>
+      {
+        this.state.show ? <Student /> : <h1>child remove</h1>
+      }
+      <button onClick={()=>this.setState({show:!this.state.show})}>Toggle</button>
     </div>
   );
 }
